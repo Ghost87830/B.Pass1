@@ -78,10 +78,6 @@ namespace Pretty_PRTK
 
 
 
-
-
-
-
         private void btnChooseDictionary1_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -141,10 +137,100 @@ namespace Pretty_PRTK
             }
         }
 
-        private void btnStartHashCracking_Click(object sender, EventArgs e)
+        private async void btnStartHashCracking_Click(object sender, EventArgs e)
         {
+            string hashToCrack = txtHashToCrack.Text;
+            string dictionaryPath = txtDictionaryPath1.Text;
 
+            if (string.IsNullOrEmpty(hashToCrack) || string.IsNullOrEmpty(dictionaryPath))
+            {
+                // Ensure this UI update happens on the UI thread
+                Invoke(new Action(() => lblHashCrackStatus.Text = "Please provide both hash and dictionary."));
+                return;
+            }
+
+            // Start the UI update before the background task
+            Invoke(new Action(() =>
+            {
+                lblHashCrackStatus.Text = "Cracking in progress...";
+                btnStartHashCracking.Enabled = false;
+            }));
+
+            // Run the cracking process in a background task
+            await Task.Run(() =>
+            {
+                try
+                {
+                    // Access comboBoxHashAlgorithm safely on the UI thread
+                    string selectedAlgorithm = "";
+                    Invoke(new Action(() =>
+                    {
+                        selectedAlgorithm = comboBoxHashAlgorithm.SelectedItem.ToString();
+                    }));
+
+                    string[] dictionary = File.ReadAllLines(dictionaryPath);
+                    bool found = false;
+
+                    foreach (string password in dictionary)
+                    {
+                        string hashedPassword = HashPassword(password, selectedAlgorithm);  // Use the selected algorithm here
+                        if (hashedPassword.Equals(hashToCrack, StringComparison.OrdinalIgnoreCase))
+                        {
+                            // Update UI with found password on the UI thread
+                            Invoke(new Action(() =>
+                            {
+                                lblHashCrackStatus.Text = $"Password found: {password}";
+                            }));
+                            found = true;
+                            break;
+                        }
+                    }
+
+                    if (!found)
+                    {
+                        // Update UI if password not found
+                        Invoke(new Action(() =>
+                        {
+                            lblHashCrackStatus.Text = "Password not found in dictionary.";
+                        }));
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Handle any errors and update UI
+                    Invoke(new Action(() =>
+                    {
+                        lblHashCrackStatus.Text = "Error: " + ex.Message;
+                    }));
+                }
+                finally
+                {
+                    // Re-enable the button and update UI in the UI thread
+                    Invoke(new Action(() =>
+                    {
+                        btnStartHashCracking.Enabled = true;
+                    }));
+                }
+            });
         }
+
+        // Modify the HashPassword method to take the selected algorithm as an argument
+        private string HashPassword(string password, string algorithm)
+        {
+            using HashAlgorithm hashAlgorithm = algorithm switch
+            {
+                "SHA256" => SHA256.Create(),
+                "SHA1" => SHA1.Create(),
+                _ => MD5.Create()
+            };
+
+            byte[] inputBytes = Encoding.UTF8.GetBytes(password);
+            byte[] hashBytes = hashAlgorithm.ComputeHash(inputBytes);
+            return BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
+        }
+
+
+
 
         private void lblHashCrackStatus_Click(object sender, EventArgs e)
         {

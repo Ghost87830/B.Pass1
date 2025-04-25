@@ -1,17 +1,25 @@
+using System;
+using System.Windows.Forms;
+
 namespace Pretty_PRTK
 {
-    internal static class Program
+    static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
+            // Show EthicsForm first
+            EthicsForm ethicsForm = new EthicsForm();
+            DialogResult result = ethicsForm.ShowDialog();  // Show as modal and wait for user interaction
+
+            // If the user agrees to the terms (i.e., closes the EthicsForm), then start Form1
+            if (result == DialogResult.OK)
+            {
+                Application.Run(new Form1());
+            }
         }
     }
 }
