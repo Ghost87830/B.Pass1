@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
-using System.Drawing; // Required for Point and Size
+using System.Drawing; 
 
 namespace Pretty_PRTK
 {
     public partial class CreateDictionaryForm : Form
     {
-        private List<string> customKeywords = new List<string>(); // Stores added keywords
+        private List<string> customKeywords = new List<string>(); //Stores added keywords
         private TextBox txtKeywordInput;
         private Button btnAddKeyword;
         private ListBox lstKeywords;
@@ -18,10 +18,10 @@ namespace Pretty_PRTK
             InitializeComponent();
             
 
-            // Add a MaskedTextBox for Date of Birth with format MM/DD/YYYY
+            //Masked textbox to format dob
             MaskedTextBox maskedTxtDOB = new MaskedTextBox
             {
-                Mask = "00/00/0000",  // MM/DD/YYYY format
+                Mask = "00/00/0000",  //dob
                 Location = new Point(20, 120),
                 Name = "maskedTxtDOB",
                 Size = new Size(100, 25),
@@ -52,9 +52,9 @@ namespace Pretty_PRTK
         {
             try
             {
-                // Collects the input data from the user
+                //collects the input data from user
                 string name = txtName.Text;
-                string dob = maskedTxtDOB.Text;  // Use the MaskedTextBox for DOB
+                string dob = maskedTxtDOB.Text;  //sse the MaskedTextBox for dob
                 string petName = txtPetName.Text;
                 string partnerName = txtPartnerName.Text;
                 string favouriteFilm = txtFavouriteFilm.Text;
@@ -62,28 +62,28 @@ namespace Pretty_PRTK
                 string secondName = txtSecondName.Text;
                 string favouriteFood = txtFavouriteFood.Text;
 
-                // Generates passwords
+                //generats passwords
                 List<string> passwords = GeneratePasswords(name, dob, petName, partnerName, favouriteFilm, currentTown, secondName, favouriteFood, customKeywords);
 
-                // Creates personalized dictionary and allows the user to save
+                //creates personalised dictionary and allows the user to save
                 SaveFileDialog saveFileDialog = new SaveFileDialog
                 {
                     Filter = "Text Files (*.txt)|*.txt",
                     Title = "Save Password Dictionary"
                 };
 
-                // For saving the txt file
+                //for saving the txt file
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     File.WriteAllLines(saveFileDialog.FileName, passwords);
 
-                    // Let the user know when the file has been successfully saved
+                    //lets user know when txt doc has been saved
                     MessageBox.Show($"Passwords successfully saved to {saveFileDialog.FileName}");
                 }
             }
             catch (Exception ex)
             {
-                // If an error occurs, display the message
+                //shows error msg if need be
                 MessageBox.Show($"Error: {ex.Message}");
             }
         }
@@ -100,7 +100,7 @@ namespace Pretty_PRTK
 
             string year = SafeSubstring(dob, 6, 4);
             string monthDay = SafeSubstring(dob, 0, 2) + SafeSubstring(dob, 3, 2);
-
+            //password combinations
             passwords.Add($"{name}{dob}");
             passwords.Add($"{name}{year}");
             passwords.Add($"{name}{monthDay}{year}");
