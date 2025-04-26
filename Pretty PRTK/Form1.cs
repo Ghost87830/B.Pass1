@@ -19,12 +19,12 @@ namespace Pretty_PRTK
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // Show the EthicsForm when the program starts
+            //Shows the EthicsForm when the program starts
             EthicsForm ethicsForm = new EthicsForm();
-            // Show the EthicsForm as a modal dialog to prevent interaction with Form1
+            //makes the EthicsForm modal so that a user cannot intereact with Form1 (main page)
             ethicsForm.ShowDialog();
 
-            // After the EthicsForm is closed, continue with Form1's functionality
+            //After the EthicsForm is ticked and closed, continue with Form1's functionality
             lblStatus.Text = "Ready";
         }
 
@@ -116,7 +116,7 @@ namespace Pretty_PRTK
                 return true;
             }
         }
-
+        //1
         private bool CheckIfWordEncrypted(string filePath)
         {
             try
@@ -201,7 +201,7 @@ namespace Pretty_PRTK
                 return false;
             }
         }
-
+        //2
         private bool TryOpenWordFile(string filePath, string password)
         {
             try

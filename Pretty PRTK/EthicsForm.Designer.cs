@@ -53,18 +53,18 @@
             // 
             checkBoxAgree.AutoSize = true;
             checkBoxAgree.ForeColor = SystemColors.ControlLightLight;
-            checkBoxAgree.Location = new Point(485, 395);
+            checkBoxAgree.Location = new Point(355, 368);
             checkBoxAgree.Name = "checkBoxAgree";
-            checkBoxAgree.Size = new Size(81, 19);
+            checkBoxAgree.Size = new Size(219, 64);
             checkBoxAgree.TabIndex = 1;
-            checkBoxAgree.Text = "Check Box";
+            checkBoxAgree.Text = "I understand that misuse of this tool \r\nis not permitted and the developer\r\nassumes no resposnability for the\r\nmisuse of this tool.";
             checkBoxAgree.UseVisualStyleBackColor = true;
             // 
             // btnContinue
             // 
-            btnContinue.Location = new Point(605, 381);
+            btnContinue.Location = new Point(596, 368);
             btnContinue.Name = "btnContinue";
-            btnContinue.Size = new Size(163, 45);
+            btnContinue.Size = new Size(192, 58);
             btnContinue.TabIndex = 2;
             btnContinue.Text = "Continue";
             btnContinue.UseVisualStyleBackColor = true;

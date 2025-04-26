@@ -43,7 +43,7 @@
             txtHashToCrack.Location = new Point(34, 31);
             txtHashToCrack.Name = "txtHashToCrack";
             txtHashToCrack.PlaceholderText = "Enter Hash Here...";
-            txtHashToCrack.Size = new Size(153, 23);
+            txtHashToCrack.Size = new Size(261, 23);
             txtHashToCrack.TabIndex = 0;
             txtHashToCrack.TextChanged += txtHashToCrack_TextChanged;
             // 
@@ -52,13 +52,13 @@
             txtDictionaryPath1.Location = new Point(34, 91);
             txtDictionaryPath1.Name = "txtDictionaryPath1";
             txtDictionaryPath1.PlaceholderText = "Select Dictionary Path...";
-            txtDictionaryPath1.Size = new Size(153, 23);
+            txtDictionaryPath1.Size = new Size(261, 23);
             txtDictionaryPath1.TabIndex = 1;
             txtDictionaryPath1.TextChanged += txtDictionaryPath1_TextChanged;
             // 
             // btnChooseDictionary1
             // 
-            btnChooseDictionary1.Location = new Point(228, 91);
+            btnChooseDictionary1.Location = new Point(313, 90);
             btnChooseDictionary1.Name = "btnChooseDictionary1";
             btnChooseDictionary1.Size = new Size(121, 23);
             btnChooseDictionary1.TabIndex = 2;
@@ -69,7 +69,7 @@
             // comboBoxHashAlgorithm
             // 
             comboBoxHashAlgorithm.FormattingEnabled = true;
-            comboBoxHashAlgorithm.Location = new Point(228, 31);
+            comboBoxHashAlgorithm.Location = new Point(313, 31);
             comboBoxHashAlgorithm.Name = "comboBoxHashAlgorithm";
             comboBoxHashAlgorithm.Size = new Size(121, 23);
             comboBoxHashAlgorithm.TabIndex = 3;
@@ -77,9 +77,9 @@
             // 
             // btnStartHashCracking
             // 
-            btnStartHashCracking.Location = new Point(34, 145);
+            btnStartHashCracking.Location = new Point(313, 145);
             btnStartHashCracking.Name = "btnStartHashCracking";
-            btnStartHashCracking.Size = new Size(153, 23);
+            btnStartHashCracking.Size = new Size(121, 36);
             btnStartHashCracking.TabIndex = 4;
             btnStartHashCracking.Text = "Start Hash Cracking";
             btnStartHashCracking.UseVisualStyleBackColor = true;
@@ -88,17 +88,18 @@
             // lblHashCrackStatus
             // 
             lblHashCrackStatus.AutoSize = true;
+            lblHashCrackStatus.Font = new Font("Segoe UI", 11F);
             lblHashCrackStatus.ForeColor = SystemColors.ButtonHighlight;
-            lblHashCrackStatus.Location = new Point(34, 212);
+            lblHashCrackStatus.Location = new Point(43, 152);
             lblHashCrackStatus.Name = "lblHashCrackStatus";
-            lblHashCrackStatus.Size = new Size(134, 15);
+            lblHashCrackStatus.Size = new Size(169, 20);
             lblHashCrackStatus.TabIndex = 5;
             lblHashCrackStatus.Text = "Status will appear here...";
             lblHashCrackStatus.Click += lblHashCrackStatus_Click;
             // 
             // btnUseRainbowTable
             // 
-            btnUseRainbowTable.Location = new Point(478, 31);
+            btnUseRainbowTable.Location = new Point(515, 31);
             btnUseRainbowTable.Name = "btnUseRainbowTable";
             btnUseRainbowTable.Size = new Size(216, 46);
             btnUseRainbowTable.TabIndex = 6;
@@ -108,7 +109,7 @@
             // 
             // txtRainbowTableOutput
             // 
-            txtRainbowTableOutput.Location = new Point(478, 92);
+            txtRainbowTableOutput.Location = new Point(515, 92);
             txtRainbowTableOutput.Multiline = true;
             txtRainbowTableOutput.Name = "txtRainbowTableOutput";
             txtRainbowTableOutput.Size = new Size(216, 89);
