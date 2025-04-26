@@ -88,6 +88,7 @@
             // lblHashCrackStatus
             // 
             lblHashCrackStatus.AutoSize = true;
+            lblHashCrackStatus.ForeColor = SystemColors.ButtonHighlight;
             lblHashCrackStatus.Location = new Point(34, 212);
             lblHashCrackStatus.Name = "lblHashCrackStatus";
             lblHashCrackStatus.Size = new Size(134, 15);
@@ -107,10 +108,10 @@
             // 
             // txtRainbowTableOutput
             // 
-            txtRainbowTableOutput.Location = new Point(478, 103);
+            txtRainbowTableOutput.Location = new Point(478, 92);
             txtRainbowTableOutput.Multiline = true;
             txtRainbowTableOutput.Name = "txtRainbowTableOutput";
-            txtRainbowTableOutput.Size = new Size(216, 33);
+            txtRainbowTableOutput.Size = new Size(216, 89);
             txtRainbowTableOutput.TabIndex = 7;
             // 
             // HashCrackingForm
